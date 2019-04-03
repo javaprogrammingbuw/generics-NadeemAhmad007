@@ -1,7 +1,7 @@
 
+//compilation error
 
-
-public class main {
+public class Main {
 	public static void main(String[] args) {
               
 
@@ -22,6 +22,9 @@ public class main {
 	    	 list.addAtStart(100);
 	    	 list.display();
 	    	 list.addAtEnd(300);
+	    	 list.display();
+	    	 System.out.println("cut at position 2 with value: " + list.get(2).data);
+	    	 list.cut(2);
 	    	 list.display();
 	    	 
 	    	 

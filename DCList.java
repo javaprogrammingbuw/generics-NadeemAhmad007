@@ -184,13 +184,16 @@ class DCList<T>
         System.out.print(ptr.getData()+ "\n");
     }
     
-    
+     
     /* Function to check if list is empty */
     public boolean isEmpty()
     {
         return start == null;
     }
-    
+    public void cut(int pos){
+    	end=get(pos-1);
+    	end.next=null;
+    }
     
     
     public void clear(){		
