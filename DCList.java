@@ -2,6 +2,8 @@ import java.util.NoSuchElementException;
 
 
 
+
+
 class DCList<T>
 {
     protected Node<T> start;
@@ -54,6 +56,7 @@ class DCList<T>
             nptr.setPrev(nptr);
             start = nptr;
             end = start;
+           
         }
         else
         {
@@ -68,12 +71,13 @@ class DCList<T>
     /* Function to insert element at position */
     public void addAtPos(T val , int pos)
     {
-        Node <T> nptr = new Node <>(val);    
+       
         if (pos == 1)
         {
             addAtStart(val);
             return;
-        }            
+        }     
+        Node <T> nptr = new Node <>(val);    
         Node <T> ptr = start;
         for (int i = 2; i <= size; i++)
         {
@@ -94,8 +98,10 @@ class DCList<T>
         if (size == 0) throw new NoSuchElementException();
         Node tmp = start;
         start = start.next;
+        
         start.prev = null;
         size--;
+        
         System.out.println("deleted: "+tmp);
         return (T) tmp;
     }
@@ -140,7 +146,8 @@ class DCList<T>
         }
         Node <T> ptr = start.getNext();
         for (int i = 2; i <= size; i++)
-        {
+        {   
+        	
             if (i == pos)
             {
                 Node<T> p = ptr.getPrev();
@@ -190,9 +197,28 @@ class DCList<T>
     {
         return start == null;
     }
+    
+    
     public void cut(int pos){
-    	end=get(pos-1);
-    	end.next=null;
+    	
+    	
+    	 Node <T> ptr = start.getNext();
+         for (int i = 2; i <= size; i++)
+         {   
+         	
+             if (i == pos)
+             {
+                 Node<T> p = ptr.getPrev();
+                 Node <T> n = ptr.getNext();
+  
+                 p.setNext(null);
+                 n.setPrev(p);
+                 size-- ;
+                 return;
+             }
+             ptr = ptr.getNext();
+         } 
+    	
     }
     
     
